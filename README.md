@@ -21,6 +21,10 @@ flutter create 폴더이름
 * source.fixAll을 true로 설정하면 eslint까지 모두 설정이 됨
 */
 "editor.codeActionsOnSave": {
-    "source.fixAll": true
-  },
+  "source.fixAll": true
+},
+"[dart]": {
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true
+},
 ```
