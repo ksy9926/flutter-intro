@@ -31,4 +31,4 @@ flutter create 폴더이름
 
 ### 단축키
 
--
+- `st` 만 작성시 Stateful Widget, Stateless Widget 스니펫을 가져올 수 있다.
