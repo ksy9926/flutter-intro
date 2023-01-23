@@ -5,7 +5,7 @@ import 'package:toonflix/services/api_service.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
+  final Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,39 @@ class HomeScreen extends StatelessWidget {
         future: webtoons,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const Text('There is data!!');
+            // ListView.builder 기능 + 구분자를 넣어주는 ListView
+            return ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                var webtoon = snapshot.data![index];
+                return Text(webtoon.title);
+              },
+              separatorBuilder: (context, index) => const SizedBox(
+                width: 20,
+              ),
+            );
+
+            // 조금 더 최적화된 ListView
+            // return ListView.builder(
+            //   scrollDirection: Axis.horizontal,
+            //   itemCount: snapshot.data!.length,
+            //   itemBuilder: (context, index) {
+            //     var webtoon = snapshot.data![index];
+            //     return Text(webtoon.title);
+            //   },
+            // );
+
+            // 기본적인 ListView
+            // return ListView(
+            //   children: [
+            //     for (var webtoon in snapshot.data!) Text(webtoon.title),
+            //   ],
+            // );
           }
-          return const Text('Loading...');
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
       // builder는 UI를 그려주는 함수이다.
