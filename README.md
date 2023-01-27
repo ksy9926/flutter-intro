@@ -49,3 +49,13 @@ dependencies:
   http: ^0.13.5
 를 추가 후 dart pub get (또는 flutter pub get) 로 설치. (보통 저장하면 자동적으로 설치 됨. 또는 yaml파일 들어갔을 때 나오는 다운로드 버튼 (get pacakges)을 클릭)
 ```
+
+### 웹사이트 열기
+
+- url_launcher 필요
+- 안드로이드, ios에 추가 설정을 해주어야함 (pub.dev - url_launcher - Readme - Configuration)
+- 원하는 종류에 따라 sms, tel, https 등을 입력
+
+```
+flutter pub add url_launcher
+```
